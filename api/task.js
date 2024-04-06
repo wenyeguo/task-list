@@ -23,7 +23,7 @@ export const fetchTasks = async () => {
   return response;
 };
 
-export const createTasks = async () => {
+export const createTasks = async ({name, completed}) => {
   const uniqueId = crypto.randomUUID();
 
   const command = new PutCommand({
