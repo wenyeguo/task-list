@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { AddTaskForm } from "./components/AddTaskForm";
 import { Task } from "./components/Task";
 import axios from "axios";
+import { API_URL } from "./utils";
 // ?send HTTP request
 const darkTheme = createTheme({
   palette: {
@@ -21,7 +22,7 @@ export default function App() {
   const [tasks, setTasks] = useState([]);
   const fectchTasks = async () => {
     try {
-      const { data } = await axios.get(); // url of api as parameter
+      const { data } = await axios.get(API_URL); // url of api as parameter
       setTasks(data);
     } catch (err) {
       console.log(err);
