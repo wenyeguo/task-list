@@ -5,7 +5,7 @@ import { Dialog, DialogTitle, TextField } from "@mui/material";
 import axios from "axios";
 import { API_URL } from "../utils";
 
-export const UpdateTaskForm = ({ isDialogOpen, setIsDialogOpen, task, fetchTasks }) => {
+export const UpdateTaskForm = ({ fetchTasks, isDialogOpen, setIsDialogOpen, task,  }) => {
   const {id, completed} = task;
   const[taskName, setTaskName] = useState("");
 
