@@ -28,8 +28,8 @@ app.get("/task", async (req, res) => {
 // create data
 app.post("/task", async (req, res) => {
     try {
-        const tasks = req.body;
-        const response = await createTasks(tasks);
+        const task = req.body;
+        const response = await createTasks(task);
         res.send(response)
       } catch(err){
         res.status(400).send(`Error Creating Tasks: ${err}`);
@@ -39,8 +39,8 @@ app.post("/task", async (req, res) => {
 //   update
 app.put("/task", async (req, res) => {
     try {
-        const tasks = req.body;
-        const response = await updateTasks(tasks);
+        const task = req.body;
+        const response = await updateTasks(task);
         res.send(response)
       } catch(err){
         res.status(400).send(`Error Update Tasks: ${err}`);
