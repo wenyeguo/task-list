@@ -1,14 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { AddTaskForm } from './components/AddTaskForm';
-import { Task } from './components/Task';
+import React, { useState, useEffect } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { AddTaskForm } from "./components/AddTaskForm";
+import { Task } from "./components/Task";
 import axios from "axios";
-import { useEffect, useState } from 'react';
-// ?send HTTP request 
+// ?send HTTP request
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark",
   },
 });
 
@@ -19,12 +18,12 @@ const darkTheme = createTheme({
 // }
 export default function App() {
   // keep track of tasks
-  const [task, setTask] = useState([]);
-  const fectchTasks = async() => {
+  const [tasks, setTasks] = useState([]);
+  const fectchTasks = async () => {
     try {
-      const {data} = await axios.get(); // url of api as parameter
+      const { data } = await axios.get(); // url of api as parameter
       setTasks(data);
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
   };
@@ -36,11 +35,10 @@ export default function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <AddTaskForm fectchTasks={fectchTasks}/>
-      {tasks.map((task) => <Task task={task} key={task.id} fectchTasks={fectchTasks}/>)} /
-       {/* call task components */}
-      <Task task={task}/>
-
+      <AddTaskForm fectchTasks={fectchTasks} />
+      {tasks.map((task) => (
+        <Task task={task} key={task.id} fectchTasks={fectchTasks} />
+      ))}
     </ThemeProvider>
   );
 }

@@ -7,7 +7,6 @@ import { UpdateTaskForm } from "./UpdateTaskForm";
 import classnames from "classnames";
 import axios from "axios";
 import { API_URL } from "../utils";
-import { fetchTasks } from "../../../api/task";
 
 // component that rendered everytime we want display task
 // name,

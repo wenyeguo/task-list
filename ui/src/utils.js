@@ -1,2 +1,1 @@
-export const API_URL = "http://localjost:3001/task";
-// change this with real deployed API
+export const API_URL = "https://twtxmbdnpxkjati36p2gk6t73y0ecgbx.lambda-url.us-east-1.on.aws/task";
