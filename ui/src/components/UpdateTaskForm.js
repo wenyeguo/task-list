@@ -66,7 +66,7 @@ export const UpdateTaskForm = ({
     try {
       await axios.put(API_URL, {
         id,
-        "#name": taskName,
+        name: taskName,
         completed,
       });
 
