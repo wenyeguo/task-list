@@ -7,12 +7,12 @@ import {
   DeleteCommand,
 } from "@aws-sdk/lib-dynamodb";
 import crypto from "crypto";
-const client = new DynamoDBClient({ region: "us-west-1" });
 
+const client = new DynamoDBClient({ region: "us-east-1" });
 const docClient = DynamoDBDocumentClient.from(client);
 
 export const fetchTasks = async () => {
-  const conmmand = new ScanCommand({
+  const command = new ScanCommand({
     ExpressionAttributeNames: { "#name": "name" },
     ProjectionExpression: "id, #name, completed",
     TableName: "Tasks",
@@ -26,7 +26,7 @@ export const fetchTasks = async () => {
 export const createTasks = async () => {
   const uniqueId = crypto.randomUUID();
 
-  const conmmand = new PutCommand({
+  const command = new PutCommand({
     TableName: "Tasks",
     Item: {
       id: uniqueId,
@@ -41,7 +41,7 @@ export const createTasks = async () => {
 };
 
 export const updateTasks = async ({ id, name, completed }) => {
-  const conmmand = new UpdateCommand({
+  const command = new UpdateCommand({
     TableName: "Tasks",
     Key: {
       id,
@@ -52,7 +52,7 @@ export const updateTasks = async ({ id, name, completed }) => {
     UpdateExpression: "set name = :n, completed = :c",
     ExpressionAttributeValues: {
       ":n": name,
-      ":c": complete,
+      ":c": completed,
     },
     ReturnValues: "ALL_NEW",
   });
@@ -63,7 +63,7 @@ export const updateTasks = async ({ id, name, completed }) => {
 };
 
 export const deleteTasks = async (id) => {
-  const conmmand = new DeleteCommand({
+  const command = new DeleteCommand({
     TableName: "Tasks",
     Key: { id },
   });

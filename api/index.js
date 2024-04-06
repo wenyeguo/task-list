@@ -1,5 +1,5 @@
 import express from "express";
-import {fetchTasks, createTasks, updateTasks, deleteTasks} from "./task";
+import {fetchTasks, createTasks, updateTasks, deleteTasks} from "./task.js";
 import serverless from "serverless-http";
 // last allow cores, only if run locally
 import cors from "cors"
@@ -67,4 +67,4 @@ if (process.env.DEVELOPMENT){
 }
 
 // deploy it using npm start in serverless
-export default handler = serverless(app);
+export const handler = serverless(app);
